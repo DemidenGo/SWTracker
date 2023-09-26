@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  SWTracker
+
+  Created by Юрий Демиденко on 05.08.2023.
+  
+*/
+
+homeTitle = "Home page";
+favoritesTitle = "Favorites";
+starWarsTitle = "Star Wars";
+starWarsDescription = "Search resources of the Universe";
+searchPlaceholder = "Enter a search keyword";
+peopleTitle = "People";
+planetsTitle = "Planets";
+starshipsTitle = "Starships";
+emptyStateTitle = "What do you want to find?";
+notFoundStateTitle = "Nothing found";
+// People:
+pilotedStarshipsTitle = "Piloted starships: ";
+genderTitle = "Gender: ";

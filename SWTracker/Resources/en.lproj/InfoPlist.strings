@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  SWTracker
+
+  Created by Юрий Демиденко on 05.08.2023.
+  
+*/
+
+"CFBundleDisplayName" = "SWTracker";

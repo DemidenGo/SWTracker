@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  SWTracker
+
+  Created by Юрий Демиденко on 05.08.2023.
+  
+*/
+
+homeTitle = "Домашняя страница";
+favoritesTitle = "Избранное";
+starWarsTitle = "Звёздные войны";
+starWarsDescription = "Поиск по ресурсам Вселенной";
+searchPlaceholder = "Поисковый запрос";
+peopleTitle = "Персонажи";
+planetsTitle = "Планеты";
+starshipsTitle = "Звездолёты";
+emptyStateTitle = "Что будем искать?";
+notFoundStateTitle = "Ничего не найдено";
+// People:
+pilotedStarshipsTitle = "Пилотируемые звездолеты: ";
+genderTitle = "Пол: ";
