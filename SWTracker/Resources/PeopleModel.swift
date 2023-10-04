@@ -16,5 +16,5 @@ struct CharacterModel: Decodable {
     let name: String
     let gender: String
     let starships: [String]
-    //let vehicles: [String]
+    let vehicles: [String]
 }

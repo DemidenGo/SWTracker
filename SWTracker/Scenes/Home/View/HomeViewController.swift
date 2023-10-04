@@ -50,9 +50,7 @@ final class HomeViewController: UIViewController {
     private lazy var searchResultsTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(CharacterTableCell.self, forCellReuseIdentifier: CharacterTableCell.identifier)
-        tableView.register(PlanetTableCell.self, forCellReuseIdentifier: PlanetTableCell.identifier)
-        tableView.register(StarshipTableCell.self, forCellReuseIdentifier: StarshipTableCell.identifier)
+        tableView.register(ResourceTableCell.self, forCellReuseIdentifier: ResourceTableCell.identifier)
         tableView.backgroundColor = .viewBackgroundColor
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
@@ -101,15 +99,7 @@ final class HomeViewController: UIViewController {
     }
 
     private func bind() {
-        viewModel.peopleObservable.bind { [weak self] _ in
-            self?.searchResultsTableView.reloadData()
-        }
-
-        viewModel.planetsObservable.bind { [weak self] _ in
-            self?.searchResultsTableView.reloadData()
-        }
-
-        viewModel.starshipsObservable.bind { [weak self] _ in
+        viewModel.resourceViewModelsObservable.bind { [weak self] _ in
             self?.searchResultsTableView.reloadData()
         }
 
@@ -245,31 +235,17 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.viewModelsCount
+        return viewModel.resourceViewModels.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard
-            let characterCell = tableView.dequeueReusableCell(withIdentifier: CharacterTableCell.identifier) as? CharacterTableCell,
-            let planetCell = tableView.dequeueReusableCell(withIdentifier: PlanetTableCell.identifier) as? PlanetTableCell,
-            let starshipCell = tableView.dequeueReusableCell(withIdentifier: StarshipTableCell.identifier) as? StarshipTableCell
-        else { return UITableViewCell() }
-
-        switch viewModel.requestedResource {
-        case .people:
-            characterCell.setup(with: viewModel.people[indexPath.row])
-            return characterCell
-        case .planets:
-            planetCell.setup(with: viewModel.planets[indexPath.row])
-            return planetCell
-        case .starships:
-            starshipCell.setup(with: viewModel.starships[indexPath.row])
-            return starshipCell
-        }
+        guard let resourceCell = tableView.dequeueReusableCell(withIdentifier: ResourceTableCell.identifier) as? ResourceTableCell else { return UITableViewCell() }
+        resourceCell.setup(with: viewModel.resourceViewModels[indexPath.row])
+        return resourceCell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 118
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

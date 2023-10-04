@@ -8,14 +8,10 @@
 import Foundation
 
 protocol HomeViewModelProtocol {
-    var viewModelsCount: Int { get }
+
     var requestedResource: Resource { get }
-    var people: [Character] { get }
-    var planets: [Planet] { get }
-    var starships: [Starship] { get }
-    var peopleObservable: Observable<[Character]> { get }
-    var planetsObservable: Observable<[Planet]> { get }
-    var starshipsObservable: Observable<[Starship]> { get }
+    var resourceViewModels: [ResourceViewModel] { get }
+    var resourceViewModelsObservable: Observable<[ResourceViewModel]> { get }
     var emptyStubLabelIsVisibleObservable: Observable<Bool> { get }
     var notFoundStubLabelIsVisibleObservable: Observable<Bool> { get }
     var isSearchRequestProcessingObservable: Observable<Bool> { get }

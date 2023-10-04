@@ -11,11 +11,20 @@ favoritesTitle = "Избранное";
 starWarsTitle = "Звёздные войны";
 starWarsDescription = "Поиск по ресурсам Вселенной";
 searchPlaceholder = "Поисковый запрос";
-peopleTitle = "Персонажи";
-planetsTitle = "Планеты";
-starshipsTitle = "Звездолёты";
 emptyStateTitle = "Что будем искать?";
 notFoundStateTitle = "Ничего не найдено";
 // People:
+peopleTitle = "Персонажи";
 pilotedStarshipsTitle = "Пилотируемые звездолеты: ";
 genderTitle = "Пол: ";
+vehiclesTitle = "Транспортные средства: ";
+// Planets:
+planetsTitle = "Планеты";
+diameterTitle = "Диаметр (км): ";
+populationTitle = "Население: ";
+gravityTitle = "Гравитация (стандартная): ";
+// Starships:
+starshipsTitle = "Звездолёты";
+modelTitle = "Модель: ";
+manufacturerTitle = "Производитель: ";
+passengersTitle = "Пассажировместимость: ";

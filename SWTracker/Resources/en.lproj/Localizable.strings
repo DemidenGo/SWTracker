@@ -11,11 +11,20 @@ favoritesTitle = "Favorites";
 starWarsTitle = "Star Wars";
 starWarsDescription = "Search resources of the Universe";
 searchPlaceholder = "Enter a search keyword";
-peopleTitle = "People";
-planetsTitle = "Planets";
-starshipsTitle = "Starships";
 emptyStateTitle = "What do you want to find?";
 notFoundStateTitle = "Nothing found";
 // People:
+peopleTitle = "People";
 pilotedStarshipsTitle = "Piloted starships: ";
 genderTitle = "Gender: ";
+vehiclesTitle = "Vehicles: ";
+// Planets:
+planetsTitle = "Planets";
+diameterTitle = "Diameter (km): ";
+populationTitle = "Population: ";
+gravityTitle = "Gravity (standard): ";
+// Starships:
+starshipsTitle = "Starships";
+modelTitle = "Model: ";
+manufacturerTitle = "Manufacturer: ";
+passengersTitle = "Passenger capacity: ";

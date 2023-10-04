@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		927E41242AC3369000DDA9FC /* ResourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E41232AC3369000DDA9FC /* ResourceViewModel.swift */; };
 		928A09C12A7EC56D00C77799 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928A09C02A7EC56D00C77799 /* AppDelegate.swift */; };
 		928A09C32A7EC56D00C77799 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928A09C22A7EC56D00C77799 /* SceneDelegate.swift */; };
 		928A09C52A7EC56D00C77799 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928A09C42A7EC56D00C77799 /* HomeViewController.swift */; };
@@ -21,12 +22,9 @@
 		92E962A92A803B5C00B704D9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962A82A803B5C00B704D9 /* Colors.swift */; };
 		92E962AC2A803FA800B704D9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962AB2A803FA800B704D9 /* HomeViewModel.swift */; };
 		92E962AE2A803FEE00B704D9 /* HomeViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962AD2A803FEE00B704D9 /* HomeViewModelProtocol.swift */; };
-		92E962B02A8042E200B704D9 /* CharacterTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962AF2A8042E200B704D9 /* CharacterTableCell.swift */; };
+		92E962B02A8042E200B704D9 /* ResourceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962AF2A8042E200B704D9 /* ResourceTableCell.swift */; };
 		92E962B32A80440C00B704D9 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962B22A80440C00B704D9 /* UIView+Extensions.swift */; };
 		92E962BA2A8222AB00B704D9 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962B92A8222AB00B704D9 /* Resources.swift */; };
-		92E962BC2A8226B900B704D9 /* PlanetTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962BB2A8226B900B704D9 /* PlanetTableCell.swift */; };
-		92E962BE2A82274900B704D9 /* StarshipTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962BD2A82274900B704D9 /* StarshipTableCell.swift */; };
-		92E962C02A823B2C00B704D9 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962BF2A823B2C00B704D9 /* CharacterViewModel.swift */; };
 		92E962C42A8385CF00B704D9 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962C32A8385CF00B704D9 /* NetworkClient.swift */; };
 		92E962C62A83864400B704D9 /* NetworkRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962C52A83864400B704D9 /* NetworkRequestProtocol.swift */; };
 		92E962C82A83868500B704D9 /* PeopleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962C72A83868500B704D9 /* PeopleRequest.swift */; };
@@ -42,11 +40,10 @@
 		92E962E52A8A4D4800B704D9 /* StarshipsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962E42A8A4D4800B704D9 /* StarshipsModel.swift */; };
 		92E962E72A8A4E8D00B704D9 /* PlanetsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962E62A8A4E8D00B704D9 /* PlanetsRequest.swift */; };
 		92E962E92A8A4E9D00B704D9 /* StarshipsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962E82A8A4E9D00B704D9 /* StarshipsRequest.swift */; };
-		92E962EB2A8A513300B704D9 /* PlanetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962EA2A8A513300B704D9 /* PlanetViewModel.swift */; };
-		92E962ED2A8AC36000B704D9 /* StarshipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E962EC2A8AC36000B704D9 /* StarshipViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		927E41232AC3369000DDA9FC /* ResourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewModel.swift; sourceTree = "<group>"; };
 		928A09BD2A7EC56D00C77799 /* SWTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		928A09C02A7EC56D00C77799 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		928A09C22A7EC56D00C77799 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,12 +62,9 @@
 		92E962A82A803B5C00B704D9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		92E962AB2A803FA800B704D9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		92E962AD2A803FEE00B704D9 /* HomeViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelProtocol.swift; sourceTree = "<group>"; };
-		92E962AF2A8042E200B704D9 /* CharacterTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableCell.swift; sourceTree = "<group>"; };
+		92E962AF2A8042E200B704D9 /* ResourceTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceTableCell.swift; sourceTree = "<group>"; };
 		92E962B22A80440C00B704D9 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		92E962B92A8222AB00B704D9 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Resources.swift; path = SWTracker/Helpers/Resources.swift; sourceTree = SOURCE_ROOT; };
-		92E962BB2A8226B900B704D9 /* PlanetTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlanetTableCell.swift; path = SWTracker/Helpers/PlanetTableCell.swift; sourceTree = SOURCE_ROOT; };
-		92E962BD2A82274900B704D9 /* StarshipTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StarshipTableCell.swift; path = SWTracker/Helpers/StarshipTableCell.swift; sourceTree = SOURCE_ROOT; };
-		92E962BF2A823B2C00B704D9 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CharacterViewModel.swift; path = SWTracker/Scenes/Home/ViewModel/CharacterViewModel.swift; sourceTree = SOURCE_ROOT; };
 		92E962C32A8385CF00B704D9 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkClient.swift; path = SWTracker/Helpers/NetworkClient.swift; sourceTree = SOURCE_ROOT; };
 		92E962C52A83864400B704D9 /* NetworkRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkRequestProtocol.swift; path = SWTracker/Helpers/NetworkRequestProtocol.swift; sourceTree = SOURCE_ROOT; };
 		92E962C72A83868500B704D9 /* PeopleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PeopleRequest.swift; path = SWTracker/Helpers/PeopleRequest.swift; sourceTree = SOURCE_ROOT; };
@@ -85,8 +79,6 @@
 		92E962E42A8A4D4800B704D9 /* StarshipsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipsModel.swift; sourceTree = "<group>"; };
 		92E962E62A8A4E8D00B704D9 /* PlanetsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsRequest.swift; sourceTree = "<group>"; };
 		92E962E82A8A4E9D00B704D9 /* StarshipsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipsRequest.swift; sourceTree = "<group>"; };
-		92E962EA2A8A513300B704D9 /* PlanetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewModel.swift; sourceTree = "<group>"; };
-		92E962EC2A8AC36000B704D9 /* StarshipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,9 +160,7 @@
 			children = (
 				92E962AB2A803FA800B704D9 /* HomeViewModel.swift */,
 				92E962AD2A803FEE00B704D9 /* HomeViewModelProtocol.swift */,
-				92E962BF2A823B2C00B704D9 /* CharacterViewModel.swift */,
-				92E962EA2A8A513300B704D9 /* PlanetViewModel.swift */,
-				92E962EC2A8AC36000B704D9 /* StarshipViewModel.swift */,
+				927E41232AC3369000DDA9FC /* ResourceViewModel.swift */,
 				92E962D52A85729600B704D9 /* ObservableWrapper.swift */,
 			);
 			path = ViewModel;
@@ -189,9 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				928A09C42A7EC56D00C77799 /* HomeViewController.swift */,
-				92E962AF2A8042E200B704D9 /* CharacterTableCell.swift */,
-				92E962BB2A8226B900B704D9 /* PlanetTableCell.swift */,
-				92E962BD2A82274900B704D9 /* StarshipTableCell.swift */,
+				92E962AF2A8042E200B704D9 /* ResourceTableCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,16 +313,12 @@
 				92E962CA2A8386C900B704D9 /* SWNetworkTask.swift in Sources */,
 				92E962AC2A803FA800B704D9 /* HomeViewModel.swift in Sources */,
 				92E962C62A83864400B704D9 /* NetworkRequestProtocol.swift in Sources */,
-				92E962BC2A8226B900B704D9 /* PlanetTableCell.swift in Sources */,
 				92E962D42A83CF2400B704D9 /* ResourceStoreProtocol.swift in Sources */,
 				92E962A92A803B5C00B704D9 /* Colors.swift in Sources */,
 				92E962C82A83868500B704D9 /* PeopleRequest.swift in Sources */,
 				928A09C52A7EC56D00C77799 /* HomeViewController.swift in Sources */,
 				92E9628F2A7ECFC800B704D9 /* TabBarController.swift in Sources */,
-				92E962BE2A82274900B704D9 /* StarshipTableCell.swift in Sources */,
-				92E962ED2A8AC36000B704D9 /* StarshipViewModel.swift in Sources */,
 				92E962D62A85729600B704D9 /* ObservableWrapper.swift in Sources */,
-				92E962C02A823B2C00B704D9 /* CharacterViewModel.swift in Sources */,
 				92E962CC2A839F3500B704D9 /* Constants.swift in Sources */,
 				92E962C42A8385CF00B704D9 /* NetworkClient.swift in Sources */,
 				92E962D02A83CB2300B704D9 /* PeopleModel.swift in Sources */,
@@ -345,12 +329,12 @@
 				928A09C12A7EC56D00C77799 /* AppDelegate.swift in Sources */,
 				92E962E72A8A4E8D00B704D9 /* PlanetsRequest.swift in Sources */,
 				92E962D22A83CC3E00B704D9 /* ResourcesStore.swift in Sources */,
-				92E962B02A8042E200B704D9 /* CharacterTableCell.swift in Sources */,
+				927E41242AC3369000DDA9FC /* ResourceViewModel.swift in Sources */,
+				92E962B02A8042E200B704D9 /* ResourceTableCell.swift in Sources */,
 				92E962932A7EDF4A00B704D9 /* FavoritesViewController.swift in Sources */,
 				92E962E52A8A4D4800B704D9 /* StarshipsModel.swift in Sources */,
 				92E962E92A8A4E9D00B704D9 /* StarshipsRequest.swift in Sources */,
 				928A09C32A7EC56D00C77799 /* SceneDelegate.swift in Sources */,
-				92E962EB2A8A513300B704D9 /* PlanetViewModel.swift in Sources */,
 				92E962BA2A8222AB00B704D9 /* Resources.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

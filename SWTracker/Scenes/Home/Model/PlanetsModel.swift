@@ -16,4 +16,5 @@ struct PlanetModel: Decodable {
     let name: String
     let diameter: String
     let population: String
+    let gravity: String
 }

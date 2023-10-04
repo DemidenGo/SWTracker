@@ -11,16 +11,14 @@ final class HomeViewModel: NSObject {
 
     private enum State {
         case empty, search, showResult
+        //  TODO: -
+        // case notFound
     }
 
     private let resourcesStore: ResourceStoreProtocol
 
     @Observable
-    private(set) var people: [Character]
-    @Observable
-    private(set) var planets: [Planet]
-    @Observable
-    private(set) var starships: [Starship]
+    private(set) var resourceViewModels: [ResourceViewModel]
     @Observable
     private var emptyStubLabelIsVisible: Bool
     @Observable
@@ -44,9 +42,7 @@ final class HomeViewModel: NSObject {
 
     init(resourcesStore: ResourceStoreProtocol = ResourcesStore()) {
         self.resourcesStore = resourcesStore
-        self.people = []
-        self.planets = []
-        self.starships = []
+        self.resourceViewModels = []
         self.state = .empty
         self.requestedResource = .starships
         self.emptyStubLabelIsVisible = false
@@ -92,52 +88,47 @@ final class HomeViewModel: NSObject {
 
     private func setPeopleViewModel(from peopleModel: PeopleModel) {
         let newPeople = peopleModel.results.map {
-            Character(name: $0.name,
-                      gender: L10n.People.genderTitle + $0.gender,
-                      numberOfStarships: L10n.People.pilotedStarshipsTitle + String($0.starships.count))
+            ResourceViewModel(name: $0.name,
+                              firstDescription: L10n.People.genderTitle + $0.gender,
+                              secondDescription: L10n.People.pilotedStarshipsTitle + String($0.starships.count),
+                              thirdDescription: L10n.People.vehiclesTitle + String($0.vehicles.count))
         }
-        people.append(contentsOf: newPeople)
+        resourceViewModels.append(contentsOf: newPeople)
         nextPageURLString = peopleModel.next
         state = .showResult
     }
 
     private func setPlanetsViewModel(from planetsModel: PlanetsModel) {
         let newPlanets = planetsModel.results.map {
-            Planet(name: $0.name,
-                   diameter: $0.diameter,
-                   population: $0.population)
+            ResourceViewModel(name: $0.name,
+                              firstDescription: L10n.Planets.populationTitle + $0.population,
+                              secondDescription: L10n.Planets.diameterTitle + $0.diameter,
+                              thirdDescription: L10n.Planets.gravityTitle + $0.gravity.prefix { $0 != " " })
         }
-        planets.append(contentsOf: newPlanets)
+        resourceViewModels.append(contentsOf: newPlanets)
         nextPageURLString = planetsModel.next
         state = .showResult
     }
 
     private func setStarshipsViewModel(from starshipsModel: StarshipsModel) {
         let newStarships = starshipsModel.results.map {
-            Starship(name: $0.name,
-                     model: $0.model,
-                     manufacturer: $0.manufacturer,
-                     passengers: $0.passengers)
+            ResourceViewModel(name: $0.name,
+                              firstDescription: L10n.Starships.modelTitle + $0.model,
+                              secondDescription: L10n.Starships.manufacturerTitle + $0.manufacturer,
+                              thirdDescription: L10n.Starships.passengersTitle + $0.passengers)
         }
-        starships.append(contentsOf: newStarships)
+        resourceViewModels.append(contentsOf: newStarships)
         nextPageURLString = starshipsModel.next
         state = .showResult
     }
 
     private func handle(_ error: Error) {
         isSearchRequestProcessing = false
-    }
-
-    private func eraseViewModels() {
-        switch requestedResource {
-        case .people: people = []
-        case .planets: planets = []
-        case .starships: starships = []
-        }
+        // TODO: -
     }
 
     private func switchToEmptyState() {
-        eraseViewModels()
+        resourceViewModels = []
         emptyStubLabelIsVisible = true
         searchRequest = nil
         nextPageURLString = nil
@@ -151,11 +142,7 @@ final class HomeViewModel: NSObject {
     private func switchToShowResultState() {
         isSearchRequestProcessing = false
         if nextPageURLString == nil {
-            switch requestedResource {
-            case .people: notFoundStubLabelIsVisible = people.isEmpty
-            case .planets: notFoundStubLabelIsVisible = planets.isEmpty
-            case .starships: notFoundStubLabelIsVisible = starships.isEmpty
-            }
+            notFoundStubLabelIsVisible = resourceViewModels.isEmpty
         }
     }
 
@@ -164,23 +151,39 @@ final class HomeViewModel: NSObject {
                                                     selector: #selector(apiCall),
                                                     object: searchRequest)
     }
+
+    private func fetchNextResourcePage(at urlString: String) {
+        switch requestedResource {
+        case .people:
+            resourcesStore.fetchPeople(at: urlString) { [weak self] result in
+                switch result {
+                case .success(let peopleModel): self?.setPeopleViewModel(from: peopleModel)
+                case .failure(let error): self?.handle(error)
+                }
+            }
+        case .planets:
+            resourcesStore.fetchPlanets(at: urlString) { [weak self] result in
+                switch result {
+                case .success(let planetsModel): self?.setPlanetsViewModel(from: planetsModel)
+                case .failure(let error): self?.handle(error)
+                }
+            }
+        case .starships:
+            resourcesStore.fetchStarships(at: urlString) { [weak self] result in
+                switch result {
+                case .success(let starshipsModel): self?.setStarshipsViewModel(from: starshipsModel)
+                case .failure(let error): self?.handle(error)
+                }
+            }
+        }
+    }
 }
 
 // MARK: - HomeViewModelProtocol
 
 extension HomeViewModel: HomeViewModelProtocol {
 
-    var viewModelsCount: Int {
-        switch requestedResource {
-        case .people: return people.count
-        case .planets: return planets.count
-        case .starships: return starships.count
-        }
-    }
-
-    var peopleObservable: Observable<[Character]> { $people }
-    var planetsObservable: Observable<[Planet]> { $planets }
-    var starshipsObservable: Observable<[Starship]> { $starships }
+    var resourceViewModelsObservable: Observable<[ResourceViewModel]> { $resourceViewModels }
     var emptyStubLabelIsVisibleObservable: Observable<Bool> { $emptyStubLabelIsVisible }
     var notFoundStubLabelIsVisibleObservable: Observable<Bool> { $notFoundStubLabelIsVisible }
     var isSearchRequestProcessingObservable: Observable<Bool> { $isSearchRequestProcessing }
@@ -204,7 +207,7 @@ extension HomeViewModel: HomeViewModelProtocol {
         guard requestedResource != resource else { return }
         requestedResource = resource
         if let searchRequest = searchRequest {
-            eraseViewModels()
+            resourceViewModels = []
             apiCall(searchRequest)
         }
     }
@@ -214,38 +217,11 @@ extension HomeViewModel: HomeViewModelProtocol {
     }
 
     func willDisplayCell(at indexPath: IndexPath) {
-        guard let nextPageURLString = nextPageURLString else { return }
-        switch requestedResource {
-        case .people:
-            if indexPath.row + 1 == people.count {
-                isSearchRequestProcessing = true
-                resourcesStore.fetchPeople(at: nextPageURLString) { [weak self] result in
-                    switch result {
-                    case .success(let peopleModel): self?.setPeopleViewModel(from: peopleModel)
-                    case .failure(let error): self?.handle(error)
-                    }
-                }
-            }
-        case .planets:
-            if indexPath.row + 1 == planets.count {
-                isSearchRequestProcessing = true
-                resourcesStore.fetchPlanets(at: nextPageURLString) { [weak self] result in
-                    switch result {
-                    case .success(let planetsModel): self?.setPlanetsViewModel(from: planetsModel)
-                    case .failure(let error): self?.handle(error)
-                    }
-                }
-            }
-        case .starships:
-            if indexPath.row + 1 == starships.count {
-                isSearchRequestProcessing = true
-                resourcesStore.fetchStarships(at: nextPageURLString) { [weak self] result in
-                    switch result {
-                    case .success(let starshipsModel): self?.setStarshipsViewModel(from: starshipsModel)
-                    case .failure(let error): self?.handle(error)
-                    }
-                }
-            }
-        }
+        guard
+            indexPath.row + 1 == resourceViewModels.count,
+            let nextPageURLString = nextPageURLString
+        else { return }
+        isSearchRequestProcessing = true
+        fetchNextResourcePage(at: nextPageURLString)
     }
 }
